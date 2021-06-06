@@ -38,9 +38,13 @@ class CustomViewController: UIViewController, ImagePickerControllerDelegate {
         print("\(items.count) items picked from gallery")
 
         Composing(items: items).compose { [weak self] timeline in
-            Exporter(timeline: timeline).export { [weak self] exportedURL in
+            print("timeline composed")
+
+            Exporter(timeline: timeline).export { exportedURL in
+                print("export completed")
                 self?.openRenderedResult(url: exportedURL)
             }
+
         }
     }
 
